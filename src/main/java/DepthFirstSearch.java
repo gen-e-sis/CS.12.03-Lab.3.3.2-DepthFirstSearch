@@ -44,41 +44,50 @@ public class DepthFirstSearch {
     }
 
     public static int[] depthFirstSearch(int[][] graph) {
-
+        Stack<Integer> stack = new Stack<Integer>();
         // Create a stack.
-
+        boolean[] visited = new boolean[graph.length];
         // Create an array called visited. This will keep track of which nodes we have visited.
 
         // Create an array called path. This will keep track of the order of nodes that we visit.
-
+        int[] path = new int[graph.length];
         // Create an index for the path array.
-
+        int index = 0;
         // Push our starting node to the stack. We can begin our traversal from any valid node. Let's begin our traversal at node 0.
-
+        stack.push(0);
         // Record the starting node as visited.
-
+        visited[0] = true;
         // While our stack is not empty i.e. while we still have nodes to explore ...
+        while (!stack.isEmpty()){
+            int temp = stack.pop();
+            path[index] = temp;
+            index++;
+            for(int i = 0; i < graph[temp].length; i++){
+                if(!visited[graph[temp][i]]){
+                    visited[graph[temp][i]] = true;
+                    stack.push(graph[temp][i]);
+                }
+            }
+        }
+        // Pop the node that we are currently visiting from the stack.
 
-            // Pop the node that we are currently visiting from the stack.
+        // Add the node that we are currently visiting to the path.
 
-            // Add the node that we are currently visiting to the path.
+        // Obtain an array of all neighbouring/adjacent nodes of the node that we are currently visiting.
 
-            // Obtain an array of all neighbouring/adjacent nodes of the node that we are currently visiting.
+        // For each neighbouring/adjacent node ...
 
-            // For each neighbouring/adjacent node ...
+        // If the neighbouring/adjacent node has not been visited ...
 
-                // If the neighbouring/adjacent node has not been visited ...
+        // Record the neighbouring/adjacent node as visited.
 
-                    // Record the neighbouring/adjacent node as visited.
-
-                    // Push the neighbouring/adjacent node onto the stack.
+        // Push the neighbouring/adjacent node onto the stack.
 
 
 
 
         // Return the path.
-        return null;
-
+        return path;
     }
 
     // A private helper method that prints the path. Used for visualisation and debugging purposes.
